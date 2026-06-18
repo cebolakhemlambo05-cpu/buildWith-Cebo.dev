@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>buildWithCebo.dev — Software Developer</title>
+  <meta name="description" content="Cebo Khemlambo — software developer building web, mobile and system solutions with a focus on reliability and maintainability."/>
+  <meta name="theme-color" content="#05070f"/>
+  <meta property="og:title" content="buildWithCebo.dev — Software Developer"/>
+  <meta property="og:description" content="Cebo Khemlambo — software developer building web, mobile and system solutions with a focus on reliability and maintainability."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://buildwithcebo.dev/index.html"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://buildwithcebo.dev/index.html"/>
+  <script data-goatcounter="https://buildwithcebo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 0 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(163,255,71,.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(77,159,255,.05) 0%, transparent 60%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+    }
+    .hero-inner {
+      display: flex; flex-direction: column;
+      justify-content: center; padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: 3rem; position: relative; z-index: 1;
+      max-width: 860px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-2); margin-bottom: 2rem;
+    }
+    .hero-badge .badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--lime); box-shadow: 0 0 8px var(--lime);
+      animation: statusPulse 2.5s ease-in-out infinite;
+    }
+    .hero-badge .badge-sep { width: 1px; height: 14px; background: var(--border-bright); }
+    h1.hero-title {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -.04em;
+      color: var(--text);
+    }
+    h1.hero-title .line-1 { display: block; }
+    h1.hero-title .accent { color: var(--lime); }
+    h1.hero-title .dim {
+      display: block;
+      color: var(--text-3);
+      font-weight: 300;
+      font-size: .75em;
+      letter-spacing: -.02em;
+    }
+    .hero-desc {
+      margin-top: 1.8rem;
+      font-size: 1.05rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 520px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      margin-top: 2.5rem;
+      display: flex; gap: .9rem; flex-wrap: wrap; align-items: center;
+    }
+    .hero-scroll-hint {
+      display: flex; align-items: center; gap: .5rem;
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--text-3); letter-spacing: .08em;
+      margin-left: .5rem;
+    }
+    .hero-scroll-hint svg { animation: bounceY 2s ease-in-out infinite; }
+    @keyframes bounceY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+    .hero-bottom {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 1.6rem 0;
+      display: flex; gap: 0; flex-wrap: wrap;
+    }
+    .hero-stat {
+      flex: 1; min-width: 120px;
+      padding: 0 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:first-child { padding-left: 0; }
+    .hero-stat:last-child { border-right: none; }
+    .hs-num {
+      font-family: var(--font-mono); font-size: 1.6rem;
+      font-weight: 700; color: var(--text); letter-spacing: -.04em;
+    }
+    .hs-num span { color: var(--lime); }
+    .hs-label {
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--text-3); letter-spacing: .08em;
+      text-transform: uppercase; margin-top: .2rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-track {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: .9rem 0; overflow: hidden;
+      position: relative;
+    }
+    .marquee-track::before, .marquee-track::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+    }
+    .marquee-track::before { left: 0; background: linear-gradient(90deg, var(--surface), transparent); }
+    .marquee-track::after  { right: 0; background: linear-gradient(-90deg, var(--surface), transparent); }
+    .marquee-inner {
+      display: flex; gap: 0;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      display: flex; align-items: center; gap: .6rem;
+      padding: 0 1.8rem;
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--text-3); letter-spacing: .08em; text-transform: uppercase;
+      white-space: nowrap;
+      border-right: 1px solid var(--border);
+    }
+    .marquee-item .mi-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--lime); }
+
+    /* ── SERVICES ── */
+    .services-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--border);
+    }
+    .service-cell {
+      background: var(--card);
+      padding: 2rem;
+      transition: background .25s;
+      position: relative;
+    }
+    .service-cell:hover { background: var(--card-hover); }
+    .sc-num {
+      font-family: var(--font-mono); font-size: .65rem; font-weight: 700;
+      color: var(--text-3); letter-spacing: .1em; margin-bottom: 1.2rem;
+    }
+    .sc-icon { font-size: 1.5rem; margin-bottom: .8rem; }
+    .sc-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; }
+    .sc-desc { font-size: .83rem; color: var(--text-2); line-height: 1.7; }
+
+    /* ── PROCESS ── */
+    .process-list { margin-top: 3rem; }
+    .process-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: opacity .3s;
+    }
+    .process-step:first-child { border-top: 1px solid var(--border); }
+    .process-step:hover { opacity: .85; }
+    .ps-num {
+      font-family: var(--font-mono); font-size: 2.5rem; font-weight: 700;
+      color: var(--border-bright); letter-spacing: -.04em;
+      padding-top: .2rem;
+    }
+    .ps-right {}
+    .ps-title { font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: .4rem; }
+    .ps-desc { font-size: .85rem; color: var(--text-2); line-height: 1.7; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--lime);
+      padding: 5rem 5vw;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .cta-band::before {
+      content: 'BUILD';
+      position: absolute;
+      font-family: var(--font-mono); font-size: 18vw; font-weight: 700;
+      color: rgba(5,7,15,.06); letter-spacing: -.05em;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      white-space: nowrap; pointer-events: none;
+    }
+    .cta-band h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700; letter-spacing: -.03em;
+      color: #05070f; margin-bottom: .8rem;
+    }
+    .cta-band p {
+      font-size: .95rem; color: rgba(5,7,15,.65);
+      max-width: 440px; margin: 0 auto 2.2rem;
+      line-height: 1.7;
+    }
+    .cta-band .cta-btns { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+    .btn-dark { background: #05070f; color: var(--lime); }
+    .btn-dark:hover { background: #0c1220; transform: translateY(-2px); }
+    .btn-outline-dark {
+      background: transparent; color: #05070f;
+      border: 1px solid rgba(5,7,15,.25);
+    }
+    .btn-outline-dark:hover { background: rgba(5,7,15,.08); transform: translateY(-2px); }
+
+    @media(max-width:600px){
+      h1.hero-title { letter-spacing: -.025em; }
+      .hero-stat { padding: 0 1rem; min-width: 90px; }
+      .hs-num { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">buildWith<span class="dot">C</span>ebo<span class="tld">.dev</span></a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="resume.html">Resume</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-status"><span class="pulse"></span>Available</div>
+    <a href="contact.html#contact-form" class="btn-nav">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html#contact-form">Hire Me →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span>Open to opportunities</span>
+      <span class="badge-sep"></span>
+      <span>South Africa 🇿🇦</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line-1">I build <span class="accent">software</span></span>
+      <span class="dim">that actually works.</span>
+    </h1>
+    <p class="hero-desc">
+      Full-stack developer specialising in system software, communication networks, web applications, mobile apps and information systems. End-to-end, ground-up.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-lime" href="contact.html#contact-form">Start a project</a>
+      <a class="btn btn-ghost" href="projects.html">View my work</a>
+      <span class="hero-scroll-hint">
+        <svg width="12" height="16" viewBox="0 0 12 16" fill="none"><path d="M6 1v14M1 9l5 6 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Scroll
+      </span>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stat">
+      <div class="hs-num">5<span>+</span></div>
+      <div class="hs-label">Tech Domains</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">10<span>+</span></div>
+      <div class="hs-label">Languages & Tools</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">Full</div>
+      <div class="hs-label">Stack Capable</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hs-num">&lt;24<span>h</span></div>
+      <div class="hs-label">Response Time</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-track">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="mi-dot"></span>HTML / CSS</span>
+    <span class="marquee-item"><span class="mi-dot"></span>JavaScript</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Node.js</span>
+    <span class="marquee-item"><span class="mi-dot"></span>SQL</span>
+    <span class="marquee-item"><span class="mi-dot"></span>MongoDB</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Firebase</span>
+    <span class="marquee-item"><span class="mi-dot"></span>C#</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Python</span>
+    <span class="marquee-item"><span class="mi-dot"></span>REST APIs</span>
+    <span class="marquee-item"><span class="mi-dot"></span>System Software</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Networks</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Mobile Apps</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><span class="mi-dot"></span>HTML / CSS</span>
+    <span class="marquee-item"><span class="mi-dot"></span>JavaScript</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Node.js</span>
+    <span class="marquee-item"><span class="mi-dot"></span>SQL</span>
+    <span class="marquee-item"><span class="mi-dot"></span>MongoDB</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Firebase</span>
+    <span class="marquee-item"><span class="mi-dot"></span>C#</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Python</span>
+    <span class="marquee-item"><span class="mi-dot"></span>REST APIs</span>
+    <span class="marquee-item"><span class="mi-dot"></span>System Software</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Networks</span>
+    <span class="marquee-item"><span class="mi-dot"></span>Mobile Apps</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section">
+  <div class="services-header">
+    <div class="reveal">
+      <div class="eyebrow">What I do</div>
+      <h2 class="section-heading">Built for the <em>whole</em> stack</h2>
+    </div>
+    <div class="reveal reveal-delay-1" style="padding-top:.8rem">
+      <p style="font-size:.88rem;color:var(--text-2);max-width:300px;line-height:1.75">From system-level thinking to polished user interfaces — every layer covered.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-cell reveal"><div class="sc-num">01</div><div class="sc-icon">⚙️</div><div class="sc-title">System Software</div><div class="sc-desc">OS-level programming, process management, memory-efficient utilities and performance-critical components.</div></div>
+    <div class="service-cell reveal reveal-delay-1"><div class="sc-num">02</div><div class="sc-icon">🌐</div><div class="sc-title">Communication Networks</div><div class="sc-desc">Network architecture, TCP/IP protocols, routing, infrastructure design and reliable connectivity systems.</div></div>
+    <div class="service-cell reveal reveal-delay-2"><div class="sc-num">03</div><div class="sc-icon">💻</div><div class="sc-title">Web Development</div><div class="sc-desc">Full-stack web apps with HTML/CSS/JS frontend, Node.js APIs, and SQL, MongoDB or Firebase data layers.</div></div>
+    <div class="service-cell reveal"><div class="sc-num">04</div><div class="sc-icon">📱</div><div class="sc-title">Mobile Apps</div><div class="sc-desc">Cross-platform mobile applications in C# and Python, from UI design through to API integration.</div></div>
+    <div class="service-cell reveal reveal-delay-1"><div class="sc-num">05</div><div class="sc-icon">🗃️</div><div class="sc-title">Information Systems</div><div class="sc-desc">Business systems design, data modelling, process digitisation and database architecture for organisations.</div></div>
+    <div class="service-cell reveal reveal-delay-2"><div class="sc-num">06</div><div class="sc-icon">🔧</div><div class="sc-title">Dev Tooling & APIs</div><div class="sc-desc">RESTful API design, version control workflows, debugging, testing and clean deployment pipelines.</div></div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section class="section section-alt">
+  <div style="max-width:var(--max-w);margin:0 auto">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start">
+      <div class="reveal" style="position:sticky;top:calc(var(--nav-h)+2rem)">
+        <div class="eyebrow">Process</div>
+        <h2 class="section-heading">How I approach<br/><em>every project</em></h2>
+        <p class="section-body">Structured thinking, clean execution and clear communication — from brief to launch.</p>
+        <div style="margin-top:2rem">
+          <a class="btn btn-lime" href="contact.html">Work with me</a>
+        </div>
+      </div>
+      <div class="process-list">
+        <div class="process-step reveal">
+          <div class="ps-num">01</div>
+          <div class="ps-right">
+            <div class="ps-title">Understand the problem</div>
+            <div class="ps-desc">Before writing any code I take time to fully understand your requirements, constraints and goals. The right question is more valuable than the fast answer.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="ps-num">02</div>
+          <div class="ps-right">
+            <div class="ps-title">Plan & architect</div>
+            <div class="ps-desc">System design, data modelling, technology selection — I map the solution before building it to catch problems early and keep scope clean.</div>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="ps-num">03</div>
+          <div class="ps-right">
+            <div class="ps-title">Build iteratively</div>
+            <div class="ps-desc">Working software early. I ship in slices, test as I go and keep you in the loop so there are no surprises at the end.</div>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="ps-num">04</div>
+          <div class="ps-right">
+            <div class="ps-title">Deliver & support</div>
+            <div class="ps-desc">Clean handoff, documentation and post-launch support. I don't disappear the moment the project ships.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div style="position:relative;z-index:1">
+    <h2>Ready to build something?</h2>
+    <p>Whether you're hiring, have a project to build, or just want to talk tech — my inbox is open.</p>
+    <div class="cta-btns">
+      <a class="btn btn-dark" href="contact.html#contact-form">Get in touch →</a>
+      <a class="btn btn-outline-dark" href="about.html">Learn about me</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">buildWith<span>Cebo</span>.dev</div>
+    <div class="footer-links">
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html#contact-form">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="mailto:cebolakhemlambo05@gmail.com" aria-label="Email">✉️ Email</a>
+      <a href="https://github.com/cebolakhemlambo05-cpu" aria-label="GitHub">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/cebolakhe-mlambo-a35b69354/" aria-label="LinkedIn">🔗 LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2026 Cebolakhe Mlambo</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
+

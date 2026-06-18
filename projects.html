@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — buildWithCebo.dev</title>
+  <meta name="description" content="Explore project work by Cebo Khemlambo, spanning web apps, mobile apps, systems tools and information systems."/>
+  <meta name="theme-color" content="#05070f"/>
+  <meta property="og:title" content="Projects — buildWithCebo.dev"/>
+  <meta property="og:description" content="Explore project work by Cebo Khemlambo, spanning web apps, mobile apps, systems tools and information systems."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://buildwithcebo.dev/projects.html"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://buildwithcebo.dev/projects.html"/>
+  <script data-goatcounter="https://buildwithcebo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* filter bar */
+    .filter-row {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .45rem 1rem; border-radius: 50px;
+      border: 1px solid var(--border-bright);
+      background: transparent; color: var(--text-2);
+      cursor: pointer; transition: all .2s;
+    }
+    .filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,.25); }
+    .filter-btn.active { background: var(--lime); color: #05070f; border-color: var(--lime); }
+
+    /* project grid */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .proj-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all .25s;
+    }
+    .proj-card:hover {
+      border-color: rgba(163,255,71,.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .proj-card.hidden { display: none; }
+    .proj-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem; position: relative;
+      overflow: hidden;
+    }
+    .proj-thumb .pt-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+      background-size: 32px 32px;
+    }
+    .proj-thumb .pt-icon { position: relative; z-index: 1; }
+    .proj-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .proj-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: .8rem;
+    }
+    .proj-type {
+      font-family: var(--font-mono); font-size: .65rem; font-weight: 600;
+      color: var(--lime); letter-spacing: .1em; text-transform: uppercase;
+    }
+    .proj-year {
+      font-family: var(--font-mono); font-size: .65rem;
+      color: var(--text-3);
+    }
+    .proj-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; letter-spacing: -.01em; }
+    .proj-card p { font-size: .83rem; color: var(--text-2); line-height: 1.7; flex: 1; }
+    .proj-footer {
+      margin-top: 1.3rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .proj-links { display: flex; gap: .5rem; }
+    .proj-link {
+      font-family: var(--font-mono); font-size: .67rem;
+      color: var(--text-3); border: 1px solid var(--border);
+      padding: .3rem .7rem; border-radius: 4px; transition: all .2s;
+    }
+    .proj-link:hover { color: var(--lime); border-color: rgba(163,255,71,.3); }
+    .proj-featured {
+      font-family: var(--font-mono); font-size: .6rem; font-weight: 600;
+      color: var(--lime); letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* featured large card */
+    .proj-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+    }
+    .proj-card.featured .proj-thumb {
+      height: 100%; min-height: 240px;
+      border-radius: 0; font-size: 5rem;
+    }
+    @media(max-width:640px){ .proj-card.featured { grid-template-columns: 1fr; } .proj-card.featured .proj-thumb { height: 160px; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">buildWith<span class="dot">C</span>ebo<span class="tld">.dev</span></a>
+  <div class="nav-center">
+    <a href="index.html">Home</a><a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a><a href="about.html">About</a><a href="resume.html">Resume</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-status"><span class="pulse"></span>Available</div>
+    <a href="contact.html#contact-form" class="btn-nav">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a><a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a><a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html#contact-form">Hire Me →</a>
+</div>
+
+<div class="page-header">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 30%,transparent 100%)"></div>
+  <div class="ph-eyebrow">Portfolio</div>
+  <h1 class="ph-title">Selected <em>Projects</em></h1>
+  <p class="ph-desc">Work across web, mobile, systems software and information systems — replace these with your real projects.</p>
+  <div class="ph-line"></div>
+</div>
+
+<section class="section">
+  <div class="filter-row reveal">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="web">Web Dev</button>
+    <button class="filter-btn" data-filter="mobile">Mobile</button>
+    <button class="filter-btn" data-filter="system">Systems</button>
+    <button class="filter-btn" data-filter="infosys">Info Systems</button>
+  </div>
+  <div class="proj-grid">
+
+    <!-- Featured -->
+    <div class="proj-card featured reveal" data-cat="web infosys">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#080c18,#0c1a2e)">
+        <div class="pt-grid"></div>
+        <span class="pt-icon">📊</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta">
+          <span class="proj-type">Web / Info System</span>
+          <span class="proj-featured">★ Featured</span>
+        </div>
+        <h3>Business Analytics Dashboard</h3>
+        <p>Real-time analytics platform aggregating sales, user activity, and operational metrics. Interactive charts, exportable reports, and role-based access control for management teams.</p>
+        <div class="chips-row"><span class="chip chip-lime">Node.js</span><span class="chip chip-lime">MongoDB</span><span class="chip chip-blue">SQL</span><span class="chip chip-lime">JavaScript</span><span class="chip chip-blue">REST API</span></div>
+        <div class="proj-footer">
+          <div class="proj-links">
+            <a class="proj-link" href="contact.html?project=Business%20Analytics%20Dashboard#contact-form">📁 Source Code</a>
+            <a class="proj-link" href="contact.html?project=Business%20Analytics%20Dashboard#contact-form">🚀 Live Demo</a>
+          </div>
+          <span class="proj-year">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="web">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#0a0f1e,#111828)">
+        <div class="pt-grid"></div><span class="pt-icon">🛒</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Web Dev</span><span class="proj-year">2025</span></div>
+        <h3>E-Commerce Platform</h3>
+        <p>Full-stack online store — product listings, cart, checkout flow, order management and admin panel. Firebase auth, MongoDB for product/order data.</p>
+        <div class="chips-row"><span class="chip chip-lime">Node.js</span><span class="chip chip-lime">MongoDB</span><span class="chip chip-lime">Firebase</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=E-Commerce%20Platform#contact-form">📁 Code</a><a class="proj-link" href="contact.html?project=E-Commerce%20Platform#contact-form">🚀 Demo</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="web">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#0f0a1e,#180d2e)">
+        <div class="pt-grid"></div><span class="pt-icon">💬</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Web Dev</span><span class="proj-year">2024</span></div>
+        <h3>Real-Time Chat Application</h3>
+        <p>Live messaging with user authentication, chat rooms, online presence indicators and message history — Firebase Realtime Database.</p>
+        <div class="chips-row"><span class="chip chip-lime">Firebase</span><span class="chip chip-lime">JavaScript</span><span class="chip chip-lime">HTML/CSS</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=Real-Time%20Chat%20Application#contact-form">📁 Code</a><a class="proj-link" href="contact.html?project=Real-Time%20Chat%20Application#contact-form">🚀 Demo</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="web infosys">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#050f0a,#0a1e10)">
+        <div class="pt-grid"></div><span class="pt-icon">🎓</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Info System</span><span class="proj-year">2024</span></div>
+        <h3>Student Management System</h3>
+        <p>Web app for managing student records, marks, attendance and reports. Normalised SQL schema with teacher and admin dashboards.</p>
+        <div class="chips-row"><span class="chip chip-blue">SQL</span><span class="chip chip-lime">Node.js</span><span class="chip chip-lime">JavaScript</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=Student%20Management%20System#contact-form">📁 Code</a><a class="proj-link" href="contact.html?project=Student%20Management%20System#contact-form">🚀 Demo</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="mobile">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#140a1e,#1e0f2e)">
+        <div class="pt-grid"></div><span class="pt-icon">💰</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Mobile App</span><span class="proj-year">2024</span></div>
+        <h3>Personal Budget Tracker</h3>
+        <p>Mobile app for tracking income, expenses, categories and visualising monthly spending trends. Offline-first with local SQLite storage.</p>
+        <div class="chips-row"><span class="chip chip-purple">C#</span><span class="chip chip-purple">SQLite</span><span class="chip chip-purple">Mobile UI</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=Personal%20Budget%20Tracker#contact-form">📁 Code</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="mobile">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#0a140a,#0f1e0f)">
+        <div class="pt-grid"></div><span class="pt-icon">📦</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Mobile App</span><span class="proj-year">2025</span></div>
+        <h3>Inventory Scanner</h3>
+        <p>Python mobile utility for scanning and logging inventory items. Syncs with a REST API backend for real-time stock management.</p>
+        <div class="chips-row"><span class="chip chip-purple">Python</span><span class="chip chip-blue">REST API</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=Inventory%20Scanner#contact-form">📁 Code</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="system">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#050a0f,#0a1019)">
+        <div class="pt-grid"></div><span class="pt-icon">⚙️</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">System Software</span><span class="proj-year">2024</span></div>
+        <h3>CPU Scheduler Simulator</h3>
+        <p>Simulation of CPU scheduling algorithms — FCFS, SJF, Round Robin and Priority — with Gantt chart output and performance metric comparison.</p>
+        <div class="chips-row"><span class="chip chip-blue">C#</span><span class="chip chip-blue">Algorithms</span><span class="chip chip-blue">OS Concepts</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=CPU%20Scheduler%20Simulator#contact-form">📁 Code</a></div></div>
+      </div>
+    </div>
+
+    <div class="proj-card reveal" data-cat="infosys">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#050c14,#081828)">
+        <div class="pt-grid"></div><span class="pt-icon">🏥</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-meta"><span class="proj-type">Info System</span><span class="proj-year">2024</span></div>
+        <h3>Hospital Records System</h3>
+        <p>Patient records, doctor allocation, appointment scheduling and medical history management — full RBAC with audit logging.</p>
+        <div class="chips-row"><span class="chip chip-blue">SQL</span><span class="chip chip-lime">Node.js</span><span class="chip chip-blue">RBAC</span></div>
+        <div class="proj-footer"><div class="proj-links"><a class="proj-link" href="contact.html?project=Hospital%20Records%20System#contact-form">📁 Code</a><a class="proj-link" href="contact.html?project=Hospital%20Records%20System#contact-form">🚀 Demo</a></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem" class="reveal">
+    <div>
+      <div style="font-size:1.1rem;font-weight:600;margin-bottom:.4rem">Have a project in mind?</div>
+      <div style="font-size:.85rem;color:var(--text-2)">These are sample templates — replace with your real work. Ready to build something new?</div>
+    </div>
+    <a class="btn btn-lime" href="contact.html#contact-form">Let's build it →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">buildWith<span>Cebo</span>.dev</div>
+    <div class="footer-links">
+      <a href="skills.html">Skills</a><a href="projects.html">Projects</a>
+      <a href="about.html">About</a><a href="resume.html">Resume</a><a href="contact.html#contact-form">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="mailto:cebolakhemlambo05@gmail.com" aria-label="Email">✉️ Email</a>
+      <a href="https://github.com/cebolakhemlambo05-cpu" aria-label="GitHub">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/cebolakhe-mlambo-a35b69354/" aria-label="LinkedIn">🔗 LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2026 Cebolakhe Mlambo</div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.proj-card').forEach(c => {
+        c.classList.toggle('hidden', f !== 'all' && !(c.dataset.cat || '').includes(f));
+      });
+    });
+  });
+</script>
+</body>
+</html>
+

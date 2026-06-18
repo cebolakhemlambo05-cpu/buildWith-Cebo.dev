@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills — buildWithCebo.dev</title>
+  <meta name="description" content="Discover the technical skills and domains where Cebo Khemlambo delivers value, from system software and networks to web and mobile development."/>
+  <meta name="theme-color" content="#05070f"/>
+  <meta property="og:title" content="Skills — buildWithCebo.dev"/>
+  <meta property="og:description" content="Discover the technical skills and domains where Cebo Khemlambo delivers value, from system software and networks to web and mobile development."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://buildwithcebo.dev/skills.html"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://buildwithcebo.dev/skills.html"/>
+  <script data-goatcounter="https://buildwithcebo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── DOMAIN CARDS ── */
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .domain-card {
+      background: var(--card);
+      padding: 2rem 2rem 1.8rem;
+      transition: background .2s;
+      position: relative;
+    }
+    .domain-card:hover { background: var(--card-hover); }
+    .dc-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+    .dc-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .dc-pct {
+      font-family: var(--font-mono); font-size: .7rem;
+      color: var(--text-3); letter-spacing: .05em;
+    }
+    .dc-pct span { color: var(--lime); font-size: 1.1rem; font-weight: 700; }
+    .domain-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .5rem; }
+    .domain-card p { font-size: .83rem; color: var(--text-2); line-height: 1.7; }
+    .dc-bar { margin-top: 1.2rem; height: 3px; background: var(--border-bright); border-radius: 3px; overflow: hidden; }
+    .dc-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--lime), var(--blue)); width: 0; transition: width 1.2s cubic-bezier(.25,.46,.45,.94); }
+
+    /* ── TECH STACK ── */
+    .stack-section { margin-top: 3rem; }
+    .stack-category { margin-bottom: 2.5rem; }
+    .stack-cat-label {
+      font-family: var(--font-mono); font-size: .68rem; font-weight: 600;
+      color: var(--text-3); letter-spacing: .12em; text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: .6rem; border-bottom: 1px solid var(--border);
+    }
+    .stack-pills { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .stack-pill {
+      display: flex; align-items: center; gap: .6rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: .55rem 1rem;
+      font-size: .83rem; font-weight: 500; color: var(--text-2);
+      transition: all .2s; cursor: default;
+    }
+    .stack-pill:hover { border-color: var(--border-bright); color: var(--text); background: var(--card-hover); }
+    .stack-pill .sp-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── CURRENTLY LEARNING ── */
+    .learn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+    .learn-item {
+      display: flex; gap: 1rem; padding: 1.4rem;
+      background: var(--card); border: 1px dashed var(--border-bright);
+      border-radius: var(--radius-md); transition: border-color .2s;
+    }
+    .learn-item:hover { border-color: rgba(77,159,255,.35); }
+    .li-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; padding-top: .1rem; }
+    .li-title { font-size: .9rem; font-weight: 600; color: var(--text); margin-bottom: .3rem; }
+    .li-desc { font-size: .8rem; color: var(--text-2); line-height: 1.65; }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">buildWith<span class="dot">C</span>ebo<span class="tld">.dev</span></a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="resume.html">Resume</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-status"><span class="pulse"></span>Available</div>
+    <a href="contact.html#contact-form" class="btn-nav">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a><a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a><a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html#contact-form">Hire Me →</a>
+</div>
+
+<div class="page-header">
+  <div class="page-header-grid" style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 30%,transparent 100%)"></div>
+  <div class="ph-eyebrow anim-1">Expertise</div>
+  <h1 class="ph-title anim-2">Skills &amp; <em>Tech Stack</em></h1>
+  <p class="ph-desc anim-3">Five technical domains, ten-plus tools — a broad and deep capability set built for real-world problems.</p>
+  <div class="ph-line"></div>
+</div>
+
+<!-- DOMAINS -->
+<section class="section">
+  <div class="reveal"><div class="eyebrow">Domains</div><h2 class="section-heading">What I <em>specialise</em> in</h2></div>
+  <div class="domain-grid">
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(163,255,71,.1)">⚙️</div>
+        <div class="dc-pct"><span>85</span>%</div>
+      </div>
+      <h3>System Software</h3>
+      <p>OS-level programming, process and memory management, system utilities and performance-critical software components.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="85"></div></div>
+      <div class="chips-row"><span class="chip chip-lime">OS Concepts</span><span class="chip chip-lime">Process Mgmt</span><span class="chip chip-lime">Performance</span></div>
+    </div>
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(77,159,255,.1)">🌐</div>
+        <div class="dc-pct"><span>80</span>%</div>
+      </div>
+      <h3>Communication Networks</h3>
+      <p>Network architecture, TCP/IP stack, routing and switching, infrastructure design and secure data communication.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="80"></div></div>
+      <div class="chips-row"><span class="chip chip-blue">TCP/IP</span><span class="chip chip-blue">Routing</span><span class="chip chip-blue">Protocols</span></div>
+    </div>
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(163,255,71,.1)">💻</div>
+        <div class="dc-pct"><span>90</span>%</div>
+      </div>
+      <h3>Web Development</h3>
+      <p>Full-stack web apps — responsive front-ends, RESTful Node.js APIs and SQL/MongoDB/Firebase data layers.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="90"></div></div>
+      <div class="chips-row"><span class="chip chip-lime">HTML/CSS</span><span class="chip chip-lime">JavaScript</span><span class="chip chip-lime">Node.js</span><span class="chip chip-lime">Firebase</span></div>
+    </div>
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(155,109,255,.1)">📱</div>
+        <div class="dc-pct"><span>78</span>%</div>
+      </div>
+      <h3>Mobile App Development</h3>
+      <p>Cross-platform mobile applications in C# and Python — clean UI, API integration and reliable on-device performance.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="78"></div></div>
+      <div class="chips-row"><span class="chip chip-purple">C#</span><span class="chip chip-purple">Python</span><span class="chip chip-purple">Mobile UI</span></div>
+    </div>
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(77,159,255,.1)">🗃️</div>
+        <div class="dc-pct"><span>82</span>%</div>
+      </div>
+      <h3>Information Systems</h3>
+      <p>Business-grade information systems design: data modelling, entity-relationship diagrams, normalisation and workflow digitisation.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="82"></div></div>
+      <div class="chips-row"><span class="chip chip-blue">Data Modelling</span><span class="chip chip-blue">ERD</span><span class="chip chip-blue">Analysis</span></div>
+    </div>
+    <div class="domain-card reveal">
+      <div class="dc-header">
+        <div class="dc-icon" style="background:rgba(163,255,71,.1)">🔧</div>
+        <div class="dc-pct"><span>88</span>%</div>
+      </div>
+      <h3>Dev Tooling</h3>
+      <p>REST API design, Git workflows, testing strategies, debugging and everything between writing code and shipping it.</p>
+      <div class="dc-bar"><div class="dc-fill" data-w="88"></div></div>
+      <div class="chips-row"><span class="chip chip-lime">Git</span><span class="chip chip-lime">REST APIs</span><span class="chip chip-lime">Testing</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="section section-alt">
+  <div class="reveal"><div class="eyebrow">Tools &amp; Languages</div><h2 class="section-heading">The full <em>tech stack</em></h2></div>
+  <div class="stack-section">
+    <div class="stack-category reveal">
+      <div class="stack-cat-label">Frontend</div>
+      <div class="stack-pills">
+        <div class="stack-pill"><span class="sp-dot" style="background:#f97316"></span>HTML5</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#3b82f6"></span>CSS3</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#eab308"></span>JavaScript (ES6+)</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#a3ff47"></span>Responsive Design</div>
+      </div>
+    </div>
+    <div class="stack-category reveal">
+      <div class="stack-cat-label">Backend</div>
+      <div class="stack-pills">
+        <div class="stack-pill"><span class="sp-dot" style="background:#4ade80"></span>Node.js</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#a3ff47"></span>Express.js</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#3b82f6"></span>REST API Design</div>
+      </div>
+    </div>
+    <div class="stack-category reveal">
+      <div class="stack-cat-label">Databases</div>
+      <div class="stack-pills">
+        <div class="stack-pill"><span class="sp-dot" style="background:#3b82f6"></span>SQL (MySQL / SQLite)</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#4ade80"></span>MongoDB</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#f97316"></span>Firebase</div>
+      </div>
+    </div>
+    <div class="stack-category reveal">
+      <div class="stack-cat-label">Mobile</div>
+      <div class="stack-pills">
+        <div class="stack-pill"><span class="sp-dot" style="background:#9b6dff"></span>C#</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#3b82f6"></span>Python</div>
+      </div>
+    </div>
+    <div class="stack-category reveal">
+      <div class="stack-cat-label">Tools &amp; Workflow</div>
+      <div class="stack-pills">
+        <div class="stack-pill"><span class="sp-dot" style="background:#f97316"></span>Git / GitHub</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#3b82f6"></span>VS Code</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#a3ff47"></span>Postman</div>
+        <div class="stack-pill"><span class="sp-dot" style="background:#eab308"></span>Linux CLI</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING -->
+<section class="section">
+  <div class="reveal"><div class="eyebrow">Always Growing</div><h2 class="section-heading">Currently <em>exploring</em></h2></div>
+  <div class="learn-grid">
+    <div class="learn-item reveal"><div class="li-icon">☁️</div><div><div class="li-title">Cloud Platforms</div><div class="li-desc">AWS and Azure fundamentals — deploying and scaling apps in the cloud.</div></div></div>
+    <div class="learn-item reveal"><div class="li-icon">🐳</div><div><div class="li-title">Docker &amp; Containers</div><div class="li-desc">Containerising applications for consistent, portable deployments.</div></div></div>
+    <div class="learn-item reveal"><div class="li-icon">🤖</div><div><div class="li-title">AI API Integration</div><div class="li-desc">Embedding AI capabilities into full-stack web and mobile applications.</div></div></div>
+    <div class="learn-item reveal"><div class="li-icon">🔐</div><div><div class="li-title">Cybersecurity</div><div class="li-desc">Application security, ethical hacking fundamentals and network hardening.</div></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">buildWith<span>Cebo</span>.dev</div>
+    <div class="footer-links">
+      <a href="skills.html">Skills</a><a href="projects.html">Projects</a>
+      <a href="about.html">About</a><a href="resume.html">Resume</a><a href="contact.html#contact-form">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="mailto:cebolakhemlambo05@gmail.com" aria-label="Email">✉️ Email</a>
+      <a href="https://github.com/cebolakhemlambo05-cpu" aria-label="GitHub">🐙 GitHub</a>
+      <a href="https://www.linkedin.com/in/cebolakhe-mlambo-a35b69354/" aria-label="LinkedIn">🔗 LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2026 Cebolakhe Mlambo</div>
+  </div>
+</footer>
+<script src="nav.js"></script>
+<script>
+  const fills = document.querySelectorAll('.dc-fill');
+  const barObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.style.width = e.target.dataset.w + '%'; });
+  }, { threshold: .4 });
+  fills.forEach(f => barObs.observe(f));
+</script>
+</body>
+</html>
+

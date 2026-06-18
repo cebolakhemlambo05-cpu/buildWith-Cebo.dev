@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — buildWithCebo.dev</title>
+  <meta name="description" content="Contact Cebolakhe Mlambo for freelance work, employment, or technical collaboration in software development." />
+  <meta name="theme-color" content="#05070f" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script data-goatcounter="https://buildwithcebo.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+    .contact-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+    }
+    .c-info-tile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.3rem;
+      margin-bottom: .8rem;
+      transition: all .2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .c-info-tile:hover {
+      border-color: var(--border-bright);
+      background: var(--card-hover);
+    }
+    .cit-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--lime-dim);
+      border: 1px solid rgba(163,255,71,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .cit-label {
+      font-family: var(--font-mono);
+      font-size: .62rem;
+      color: var(--text-3);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .cit-val {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: .1rem;
+    }
+    .avail-card {
+      background: var(--lime-dim);
+      border: 1px solid rgba(163,255,71,.2);
+      border-radius: var(--radius-md);
+      padding: 1.3rem 1.4rem;
+      margin-top: 1.5rem;
+    }
+    .avail-head {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--lime);
+      margin-bottom: .5rem;
+    }
+    .avail-head .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 8px var(--lime);
+      animation: statusPulse 2.5s infinite;
+    }
+    .avail-card p {
+      font-size: .82rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+    .form-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+      letter-spacing: -.02em;
+    }
+    .form-card .fc-sub {
+      font-size: .85rem;
+      color: var(--text-2);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .form-card h3 em {
+      color: var(--lime);
+      font-style: normal;
+    }
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      font-size: .83rem;
+      padding: .9rem;
+    }
+    #form-status {
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius-sm);
+      margin-top: .8rem;
+      display: none;
+      line-height: 1.5;
+    }
+    #form-status.success {
+      background: rgba(163,255,71,.08);
+      color: var(--lime);
+      border: 1px solid rgba(163,255,71,.2);
+      display: block;
+    }
+    #form-status.error {
+      background: rgba(255,100,80,.08);
+      color: #ff8066;
+      border: 1px solid rgba(255,100,80,.2);
+      display: block;
+    }
+    @media (max-width:768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">buildWith<span class="dot">C</span>ebo<span class="tld">.dev</span></a>
+  <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-status"><span class="pulse"></span>Available</div>
+    <a href="contact.html" class="btn-nav">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Hire Me →</a>
+</div>
+
+<div class="page-header">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black 30%,transparent 100%)"></div>
+  <div class="ph-eyebrow">Let's talk</div>
+  <h1 class="ph-title">Get in <em>touch</em></h1>
+  <p class="ph-desc">Hiring, freelance project, collaboration or just want to talk tech — my inbox is always open.</p>
+  <div class="ph-line"></div>
+</div>
+
+<section class="section">
+  <div class="contact-layout">
+
+    <!-- Sidebar -->
+    <div class="contact-sidebar reveal">
+      <div class="eyebrow" style="margin-bottom:1.3rem">Reach me directly</div>
+      <a class="c-info-tile" href="tel:0660340946">
+        <div class="cit-icon">📞</div>
+        <div><div class="cit-label">Cell</div><div class="cit-val">066 034 0946</div></div>
+      </a>
+      <a class="c-info-tile" href="mailto:cebolakhemlambo05@gmail.com">
+        <div class="cit-icon">✉️</div>
+        <div><div class="cit-label">Email</div><div class="cit-val">cebolakhemlambo05@gmail.com</div></div>
+      </a>
+      <div class="c-info-tile" style="cursor:default">
+        <div class="cit-icon">📍</div>
+        <div><div class="cit-label">Location</div><div class="cit-val">South Africa 🇿🇦</div></div>
+      </div>
+      <div class="c-info-tile" style="cursor:default">
+        <div class="cit-icon">⏱️</div>
+        <div><div class="cit-label">Response time</div><div class="cit-val">Within 24 hours</div></div>
+      </div>
+      <div class="c-info-tile" style="cursor:default">
+        <div class="cit-icon">💼</div>
+        <div><div class="cit-label">Work type</div><div class="cit-val">Full-time · Freelance · Contract</div></div>
+      </div>
+      <div class="avail-card">
+        <div class="avail-head"><span class="dot"></span>Currently available</div>
+        <p>Actively looking for employment and freelance work. Short tasks, long-term roles — both welcome.</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form-card reveal">
+      <h3>Send me a <em>message</em></h3>
+      <div class="fc-sub">Fill in the form and I'll get back to you within 24 hours. The more detail the better.</div>
+      <form id="contact-form" novalidate>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label>Your name</label>
+            <input type="text" name="from_name" placeholder="Jane Doe" required />
+          </div>
+          <div class="form-field">
+            <label>Email address</label>
+            <input type="email" name="from_email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-field">
+            <label>Phone (optional)</label>
+            <input type="tel" name="from_phone" placeholder="+27 __ ___ ____" />
+          </div>
+          <div class="form-field">
+            <label>Company (optional)</label>
+            <input type="text" name="company" placeholder="Your company" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Reason for reaching out</label>
+          <select name="subject">
+            <option value="Job Opportunity">💼 Job opportunity</option>
+            <option value="Freelance / Contract">🛠️ Freelance or contract project</option>
+            <option value="Project Collaboration">🤝 Collaboration</option>
+            <option value="Technical Help">💡 Need technical help</option>
+            <option value="General Enquiry">💬 General enquiry</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Your message</label>
+          <textarea name="message" placeholder="Tell me about your project, role or question. The more context you share, the better I can help." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-lime btn-submit">Send message →</button>
+        <div id="form-status"></div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">buildWith<span>Cebo</span>.dev</div>
+    <div class="footer-links">
+      <a href="skills.html">Skills</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Cebolakhe Mlambo</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  const EMAILJS_PUBLIC_KEY  = 'CinpPReKC59o9X9Sl';
+  const EMAILJS_SERVICE_ID  = 'service_3xl780o';
+  const EMAILJS_TEMPLATE_ID = 'template_vbq9h9n';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  const form   = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    status.className = '';
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  form.from_name.value,
+        from_email: form.from_email.value,
+        from_phone: form.from_phone.value || 'Not provided',
+        company:    form.company.value    || 'Not provided',
+        subject:    form.subject.value,
+        message:    form.message.value,
+        to_name:    'Cebo',
+      });
+      status.textContent = '✓ Message sent — I\'ll reply within 24 hours.';
+      status.className = 'success';
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      status.textContent = '✗ Something went wrong. Email me directly: cebolakhemlambo05@gmail.com';
+      status.className = 'error';
+    } finally {
+      btn.textContent = 'Send message →'; btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
